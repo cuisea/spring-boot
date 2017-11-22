@@ -29,11 +29,12 @@ public class ThymeleafController {
         model.addAttribute("currentTime", formattedDate);
 
         List list = new ArrayList();
-        list.add("b");
+        list.add("bb");
         list.add("aa");
-        list.add("ddd");
+        list.add("dd");
         list.add("cc");
         model.addAttribute("collects", list);
+
         return "hello";
     }
 }
