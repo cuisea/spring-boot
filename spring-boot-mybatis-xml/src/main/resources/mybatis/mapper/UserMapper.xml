@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cuisea.mybatis.dao.UserMapper" >
+    <!-- 下面是MyBatis Generator自动生成 -->
+    <resultMap id="BaseResultMap" type="User">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+        <result column="pass_word" jdbcType="VARCHAR" property="passWord" />
+        <result column="reg_time" jdbcType="VARCHAR" property="regTime" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, email, nick_name, pass_word, reg_time, user_name
+    </sql>
+    <select id="getAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from b_user
+    </select>
+    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from b_user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <insert id="insert" parameterType="User">
+        insert into b_user (id, email, nick_name,
+        pass_word, reg_time, user_name
+        )
+        values (#{id,jdbcType=BIGINT}, #{email,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
+        #{passWord,jdbcType=VARCHAR}, #{regTime,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}
+        )
+    </insert>
+    <update id="update" parameterType="User">
+        update b_user
+        set email = #{email,jdbcType=VARCHAR},
+        nick_name = #{nickName,jdbcType=VARCHAR},
+        pass_word = #{passWord,jdbcType=VARCHAR},
+        reg_time = #{regTime,jdbcType=VARCHAR},
+        user_name = #{userName,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from b_user
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>
