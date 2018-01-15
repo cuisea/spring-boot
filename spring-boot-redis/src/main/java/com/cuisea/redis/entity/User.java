@@ -1,6 +1,7 @@
 package com.cuisea.redis.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * 用户
@@ -10,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "b_user")
-public class User {
+public class User implements Serializable{
 
     @Id
     @GeneratedValue
